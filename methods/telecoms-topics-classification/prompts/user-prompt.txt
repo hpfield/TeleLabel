@@ -1,0 +1,14 @@
+Please review the following title and abstract. Assign a confidence score to each label from the list based on its relevance. Scores should range from 0 (not relevant) to 1 (highly relevant).
+
+Title: {title}
+
+Abstract: {abstract}
+
+Labels to consider:
+
+{labels_list}
+
+Response format:
+Submit your response as a dictionary with each label and its corresponding confidence score, like this:
+{{"label_1": 0.8, "label_2": 0.5, "label_3": 0.1}}
+Do not include anything else in your response.

@@ -22,6 +22,7 @@ def main(
     max_batch_size: int = 2,
     max_gen_len: Optional[int] = None,
 ):
+
     generator = Llama.build(
         ckpt_dir=ckpt_dir,
         tokenizer_path=tokenizer_path,
@@ -34,6 +35,7 @@ def main(
     df = pd.read_csv(file_path)
     print("Starting!")
     num_items = df.shape[0]
+    print('Num items: ',num_items)
     total_seconds = 2.6 * num_items
 
     hours = total_seconds // 3600
