@@ -43,7 +43,6 @@ def main(
     base_checkpoint_path = '/home/rz20505/Documents/ask-jgi/data/labelled/llama-3-multilabel-classification/'
     df = pd.read_csv(file_path)
     df['topics'] = df['topics'].apply(lambda x: ast.literal_eval(x) if x else [])
-    df = df.iloc[:3]
     print("Starting!")
     num_items = df.shape[0]
     print('Num items: ',num_items)
