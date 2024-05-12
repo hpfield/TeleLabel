@@ -39,8 +39,9 @@ def main(
     )
 
     file_path = '/home/rz20505/Documents/ask-jgi/data/cordis-telecoms.csv'
-    base_checkpoint_path = '/home/rz20505/Documents/ask-jgi/data/labelled/llama-3-multilabel-classification/'
+    base_checkpoint_path = '/home/rz20505/Documents/ask-jgi/data/labelled/llama-3-multilabel-classification-test/'
     df = pd.read_csv(file_path)
+    df = df.iloc[:3]
     df['topics'] = df['topics'].apply(lambda x: ast.literal_eval(x) if x else [])
     print("Starting!")
     num_items = df.shape[0]

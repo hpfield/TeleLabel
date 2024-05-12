@@ -5,11 +5,11 @@ from eval_utils import get_results, print_false_negatives, save_best, plot_metri
 # Function to set up command line argument parsing
 def setup_arg_parser():
     parser = argparse.ArgumentParser(description='Evaluate machine learning model on specified metrics.')
-    parser.add_argument('--data_path', type=str, default='data/labelled/llama-3-multilabel-classification/',
+    parser.add_argument('--data_path', type=str, default='data/labelled/llama-3-multilabel-classification-test/',
                         help='Path to the data directory')
-    parser.add_argument('--results_file', type=str, default='eval/results/llama-3-multilabel-classification.csv',
+    parser.add_argument('--results_file', type=str, default='eval/results/llama-3-multilabel-classification-test.csv',
                         help='Path to save the results CSV file')
-    parser.add_argument('--best_results_file', type=str, default='eval/results/llama-3-multilabel-classification-best.csv',
+    parser.add_argument('--best_results_file', type=str, default='eval/results/llama-3-multilabel-classification-best-test.csv',
                         help='Path to save the best results CSV file')
     parser.add_argument('-a', '--all', action='store_true', help='Evaluate all metrics')
     parser.add_argument('-f', '--false_negatives', action='store_true', help='Evaluate false negatives')
