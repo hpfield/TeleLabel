@@ -139,7 +139,7 @@ def plot_metrics(metrics, results_df):
             y=results_df['Chunk Size'],
             z=results_df[metric],
             mode='markers',
-            marker=dict(size=2)
+            marker=dict(size=5)
         )])
 
         fig.update_layout(
@@ -150,6 +150,7 @@ def plot_metrics(metrics, results_df):
             ),
             title=f'3D Plot of {metric}'
         )
-        # Save to HTML
-        #fig.write_html(f'plots/{metric}_plot.html')
-        fig.write_image(f'plots/{metric}_plot.png')
+        # Save as a static image
+        file_path = f'plots/{metric}_plot.png'
+        fig.write_image(file_path)
+        print(f"Plot saved as static image to {file_path}")
