@@ -151,4 +151,5 @@ def plot_metrics(metrics, results_df):
             title=f'3D Plot of {metric}'
         )
         # Save to HTML
-        fig.write_html(f'plots/{metric}_plot.html')
+        #fig.write_html(f'plots/{metric}_plot.html')
+        fig.write_image(f'plots/{metric}_plot.png')
