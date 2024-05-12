@@ -111,17 +111,44 @@ def save_best(metrics, results_df, best_results_file):
     best_df = best_df[['Metric', 'Best Score', 'Threshold', 'Chunk Size']]
     best_df.to_csv(best_results_file)
 
-def plot_metrics(metrics, results_df):
-    for metric in metrics:
-        fig = plt.figure()
-        ax = fig.add_subplot(111, projection='3d')
-        x = results_df['Threshold']
-        z = results_df['Chunk Size']
-        y = results_df[metric]
+# def plot_metrics(metrics, results_df):
+#     for metric in metrics:
+#         fig = plt.figure()
+#         ax = fig.add_subplot(111, projection='3d')
+#         x = results_df['Threshold']
+#         z = results_df['Chunk Size']
+#         y = results_df[metric]
 
-        ax.scatter(x, z, y)
-        ax.set_xlabel('Threshold')
-        ax.set_ylabel('Chunk Size')
-        ax.set_zlabel(metric)
-        ax.set_title(f'3D Plot of {metric}')
-        plt.show()
+#         ax.scatter(x, z, y)
+#         ax.set_xlabel('Threshold')
+#         ax.set_ylabel('Chunk Size')
+#         ax.set_zlabel(metric)
+#         ax.set_title(f'3D Plot of {metric}')
+#         plt.show()
+
+import os
+import plotly.graph_objects as go
+
+def plot_metrics(metrics, results_df):
+    # Ensure the directory exists
+    os.makedirs('plots', exist_ok=True)
+
+    for metric in metrics:
+        fig = go.Figure(data=[go.Scatter3d(
+            x=results_df['Threshold'],
+            y=results_df['Chunk Size'],
+            z=results_df[metric],
+            mode='markers',
+            marker=dict(size=2)
+        )])
+
+        fig.update_layout(
+            scene=dict(
+                xaxis_title='Threshold',
+                yaxis_title='Chunk Size',
+                zaxis_title=metric
+            ),
+            title=f'3D Plot of {metric}'
+        )
+        # Save to HTML
+        fig.write_html(f'plots/{metric}_plot.html')

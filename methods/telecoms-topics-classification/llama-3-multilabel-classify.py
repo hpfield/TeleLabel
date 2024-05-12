@@ -30,6 +30,8 @@ def main(
     max_batch_size: int = 2,
     max_gen_len: Optional[int] = None,
 ):
+    
+    os.chdir('../..')
 
     generator = Llama.build(
         ckpt_dir=ckpt_dir,
@@ -38,19 +40,18 @@ def main(
         max_batch_size=max_batch_size,
     )
 
-    file_path = '/home/rz20505/Documents/ask-jgi/data/cordis-telecoms.csv'
-    base_checkpoint_path = '/home/rz20505/Documents/ask-jgi/data/labelled/llama-3-multilabel-classification-test/'
+    file_path = 'data/cordis-telecoms.csv'
+    base_checkpoint_path = 'data/labelled/llama-3-multilabel-classification/'
     df = pd.read_csv(file_path)
-    df = df.iloc[:3]
     df['topics'] = df['topics'].apply(lambda x: ast.literal_eval(x) if x else [])
     print("Starting!")
     num_items = df.shape[0]
     print('Num items: ',num_items)
 
-    with open('/home/rz20505/Documents/ask-jgi/methods/telecoms-topics-classification/prompts/system-prompt.txt', 'r') as f:
+    with open('methods/telecoms-topics-classification/prompts/system-prompt.txt', 'r') as f:
         system_prompt = f.read()
 
-    with open('/home/rz20505/Documents/ask-jgi/methods/telecoms-topics-classification/prompts/user-prompt.txt') as f:
+    with open('methods/telecoms-topics-classification/prompts/user-prompt.txt') as f:
         user_prompt = f.read()    
 
     tel_topic_match = ["teleology","telecommunications","radio frequency","radar","mobile phones","bluetooth","WiFi","data networks","optical networks","microwave technology","radio technology","mobile radio","4G","LiFi","mobile network","radio and television","satellite radio","telecommunications networks","5G","fiber-optic network","cognitive radio","fixed wireless network",]
