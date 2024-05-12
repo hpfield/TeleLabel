@@ -63,3 +63,9 @@ python eval/llama-3-multilabel-eval.py
 ```
 
 
+## Results
+
+ ![Precision Plot](plots/Precision_plot.png)
+ ![Recall Plot](plots/Recall_plot.png)
+ ![F1 Score Plot](plots/F1_Score_plot.png)
+ ![Accuracy Plot](plots/Accuracy_plot.png)
