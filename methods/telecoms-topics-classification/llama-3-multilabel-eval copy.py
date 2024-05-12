@@ -1,10 +1,25 @@
 import pandas as pd
+import matplotlib.pyplot as plt
+from collections import Counter
+
 
 POSSIBLE_TOPICS = 22
 data_path = '/home/rz20505/Documents/ask-jgi/data/labelled/llama-3-multilabel-classification/'
 results_file = '/home/rz20505/Documents/ask-jgi/eval/results/llama-3-multilabel-classification.csv'
 best_results_file = '/home/rz20505/Documents/ask-jgi/eval/results/llama-3-multilabel-classification-best.csv'
 tel_topic_match = ["teleology","telecommunications","radio frequency","radar","mobile phones","bluetooth","WiFi","data networks","optical networks","microwave technology","radio technology","mobile radio","4G","LiFi","mobile network","radio and television","satellite radio","telecommunications networks","5G","fiber-optic network","cognitive radio","fixed wireless network",]
+
+# Function to compute false negatives given a DataFrame
+def compute_false_negatives(df, thresh):
+    gt = df['gt']
+    scores = df['topics']
+
+    predictions = scores.apply(lambda d: [k for k, v in d.items() if v >= thresh])
+
+    false_negatives = []
+    for gt_set, pred_set in zip(gt, predictions):
+        false_negatives.extend(list(set(gt_set) - set(pred_set)))
+    return false_negatives
 
 results = []
 
@@ -56,6 +71,30 @@ results_df.to_csv(results_file)
 
 # Get best performance
 metrics = ['Precision', 'Recall', 'F1 Score', 'Accuracy'] 
+
+optimal_thresholds = {}
+
+for metric in metrics:
+    # Find the optimal threshold for maximizing this metric
+    optimal_row = results_df.loc[results_df[metric].idxmax()]
+    optimal_threshold = optimal_row['Threshold']
+    optimal_chunk_size = int(optimal_row['Chunk Size'])
+    optimal_thresholds[metric] = (optimal_threshold, optimal_chunk_size)
+
+    # Load the corresponding dataset and compute false negatives
+    optimal_file_path = data_path + f'cordis-telecoms-chunk_size-{optimal_chunk_size}.json'
+    df_optimal = pd.read_json(optimal_file_path, lines=True)
+    false_negatives = compute_false_negatives(df_optimal, optimal_threshold)
+
+    # Find the 5 most common false negatives
+    most_common_fns = Counter(false_negatives).most_common(5)
+
+    # Print the results for each metric
+    print(f"Top 5 most common false negatives for {metric} (Optimal Threshold: {optimal_threshold}):")
+    for label, count in most_common_fns:
+        print(f"{label}: {count} occurrences")
+    print()
+
 best_rows = []
 
 for metric in metrics:
@@ -71,5 +110,19 @@ best_df = pd.DataFrame(best_rows)
 
 best_df = best_df[['Metric', 'Best Score', 'Threshold', 'Chunk Size']]
 best_df.to_csv(best_results_file)
+
+for metric in metrics:
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+    x = results_df['Threshold']
+    z = results_df['Chunk Size']
+    y = results_df[metric]
+
+    ax.scatter(x, z, y)
+    ax.set_xlabel('Threshold')
+    ax.set_ylabel('Chunk Size')
+    ax.set_zlabel(metric)
+    ax.set_title(f'3D Plot of {metric}')
+    plt.show()
 
 print('Evaluation completed.')
