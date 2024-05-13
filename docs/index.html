@@ -2,16 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>3D Plot Showcase</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Plots Showcase</title>
+    <style>
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+    </style>
 </head>
 <body>
-    <h1>3D Plots</h1>
-    <p>Click on the links below to view each plot:</p>
-    <ul>
-        <li><a href="plots/Precision_plot.html">Precision Plot</a></li>
-        <li><a href="plots/Recall_plot.html">Recall Plot</a></li>
-        <li><a href="plots/F1_Score_plot.html">F1 Score Plot</a></li>
-        <li><a href="plots/Accuracy_plot.html">Accuracy Plot</a></li>
-    </ul>
+    <h1>Interactive 3D Plots</h1>
+    <p>View the interactive plots below:</p>
+
+    <!-- Embed each plot using an iframe -->
+    <h2>Precision Plot</h2>
+    <iframe src="plots/Precision_plot.html"></iframe>
+
+    <h2>Recall Plot</h2>
+    <iframe src="plots/Recall_plot.html"></iframe>
+
+    <h2>F1 Score Plot</h2>
+    <iframe src="plots/F1_Score_plot.html"></iframe>
+
+    <h2>Accuracy Plot</h2>
+    <iframe src="plots/Accuracy_plot.html"></iframe>
+
 </body>
 </html>
