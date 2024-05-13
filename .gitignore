@@ -2,3 +2,5 @@ data/**
 /Meta-Llama-3-8B-Instruct
 from-team/
 setup/
+environment-verbose.yml
+run_all.sh
