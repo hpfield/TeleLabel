@@ -165,4 +165,4 @@ def plot_metrics(metrics, results_df):
         fig.write_image(file_path + 'png')
         fig.write_html(file_path + 'html')
         print(f"Plot saved as static image to {file_path}")
-        fig.show()
+        # fig.show()
