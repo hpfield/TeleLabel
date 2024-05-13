@@ -65,9 +65,4 @@ python eval/llama-3-multilabel-eval.py
 
 ## Results
 
- ![Precision Plot](plots/Precision_plot.png)
- ![Recall Plot](plots/Recall_plot.png)
- ![F1 Score Plot](plots/F1_Score_plot.png)
- ![Accuracy Plot](plots/Accuracy_plot.png)
-
- [View 3D Plot of Precision](https://hpfield.github.io/text-labelling/plots/Precision_plot.html)
+Interactive plots at the [repo page](https://hpfield.github.io/text-labelling/)

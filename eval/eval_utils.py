@@ -147,11 +147,17 @@ def plot_metrics(metrics, results_df):
                 xaxis_title='Threshold',
                 yaxis_title='Chunk Size',
                 zaxis_title=metric,
+                camera=dict(
+                    eye=dict(x=1.25, y=1.25, z=1.25),  # Adjust to change the initial view
+                    center=dict(x=0, y=0, z=-0.2),  # Adjust center to keep the plot centered
+                ),
+                aspectmode='manual',  # Allows manual resizing of the plot
+                aspectratio=dict(x=1, y=1, z=0.7)  # Adjust to maintain proportions
             ),
             title=f'3D Plot of {metric}',
             width=800,  # Width of the plot in pixels
-            height=450,  # Height of the plot in pixels
-            margin=dict(l=50, r=50, t=50, b=50),
+            height=600,  # Height of the plot in pixels
+            margin=dict(l=0, r=0, t=0, b=0),
             autosize=False
         )
         # Save as a static image
@@ -159,3 +165,4 @@ def plot_metrics(metrics, results_df):
         fig.write_image(file_path + 'png')
         fig.write_html(file_path + 'html')
         print(f"Plot saved as static image to {file_path}")
+        fig.show()
