@@ -50,7 +50,8 @@ python eda/cordis.py
 This passes each abstract to Llama 3 multiple times so that we can determine how many topics we can ask the model to consider at one time. The model is handed a list of possible topics for the abstract, and asked to give each of those topics a confidence score.
 
 ```
-sh methods/telecoms-topics-classification/llama-3-multilabel-classification.sh
+cd methods/telecoms-topics-classification/
+sh llama-3-multilabel-classification.sh
 ```
 
 
@@ -59,7 +60,8 @@ sh methods/telecoms-topics-classification/llama-3-multilabel-classification.sh
 To evaluate the performance of Llama 3 when assigning topic labels to academic abstracts, we consider a range of cutoff points for confidence thresholds and the quantity of possible topics we ask the model to consider at once.
 
 ```
-python eval/llama-3-multilabel-eval.py
+cd eval
+python llama-3-multilabel-eval.py
 ```
 
 
