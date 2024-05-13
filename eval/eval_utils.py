@@ -146,11 +146,15 @@ def plot_metrics(metrics, results_df):
             scene=dict(
                 xaxis_title='Threshold',
                 yaxis_title='Chunk Size',
-                zaxis_title=metric
+                zaxis_title=metric,
             ),
-            title=f'3D Plot of {metric}'
+            title=f'3D Plot of {metric}',
+            width=800,  # Width of the plot in pixels
+            height=450,  # Height of the plot in pixels
+            margin=dict(l=50, r=50, t=50, b=50) 
         )
         # Save as a static image
-        file_path = f'plots/{metric}_plot.png'
-        fig.write_image(file_path)
+        file_path = f'docs/plots/{metric}_plot.'
+        fig.write_image(file_path + 'png')
+        fig.write_html(file_path + 'html')
         print(f"Plot saved as static image to {file_path}")
