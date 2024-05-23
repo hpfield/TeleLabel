@@ -48,7 +48,9 @@ python cordis.py
 
 ## Label Data
 
-This passes each abstract to Llama 3 multiple times so that we can determine how many topics we can ask the model to consider at one time. The model is handed a list of possible topics for the abstract, and asked to give each of those topics a confidence score.
+Rather than a list of confirmed labels, we ask the model to output a confidence score for each label so that we can later determine an appropriate threshold. 
+
+Furthermore, we want to know if there is a limit to how many possible labels the model can effectively consider at one time. We have a total of 22 lables, passing the labels to the model one at a time to start with, all the way up to considering all possible labels at once. The more labels we can consider at one time, the faster we can label the full dataset.
 
 ```
 cd methods/telecoms-topics-classification/
