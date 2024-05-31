@@ -1,0 +1,10 @@
+Please review the following title and abstract. Assign a confidence score to the abstract based on its relevance to Telecommunications. Scores should range from 0 (not relevant) to 1 (highly relevant).
+
+Title: {title}
+
+Abstract: {abstract}
+
+Response format:
+Submit your response as a single confidence score, like this:
+0.8
+Do not include anything else in your response.

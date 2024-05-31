@@ -1,0 +1,8 @@
+You are tasked with labeling academic abstracts using a predefined list of topic labels. For each abstract:
+
+- Review the provided abstract carefully.
+- Assign a confidence score (between 0 and 1) to each topic label based on its relevance to the abstract. The score represents your certainty that the label is appropriate.
+- Consider each label independently, regardless of other topics.
+- Your output should be a dictionary with topic labels and their respective confidence scores. Ensure the labels exactly match those provided.
+
+The labels will be used by research institutions to categorize the abstracts. You are to prioritise the labelling of True Positives, being generous when assigning scores to labels that you aren't sure about.

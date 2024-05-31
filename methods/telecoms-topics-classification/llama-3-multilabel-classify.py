@@ -41,14 +41,14 @@ def main(
     )
 
     file_path = 'data/cordis-telecoms.csv'
-    base_checkpoint_path = 'data/labelled/llama-3-multilabel-classification/'
+    base_checkpoint_path = 'data/labelled/llama-3-multilabel-classification-max-recall/'
     df = pd.read_csv(file_path)
     df['topics'] = df['topics'].apply(lambda x: ast.literal_eval(x) if x else [])
     print("Starting!")
     num_items = df.shape[0]
     print('Num items: ',num_items)
 
-    with open('methods/telecoms-topics-classification/prompts/system-prompt.txt', 'r') as f:
+    with open('methods/telecoms-topics-classification/prompts/system-prompt-max-recall.txt', 'r') as f:
         system_prompt = f.read()
 
     with open('methods/telecoms-topics-classification/prompts/user-prompt.txt') as f:
