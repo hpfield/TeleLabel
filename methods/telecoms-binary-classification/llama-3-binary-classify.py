@@ -9,7 +9,7 @@ import ast
 import os
 
 def save_checkpoint(data, file_path):
-    headers = ['description', 'name', 'gt', 'topics']
+    headers = ['description', 'name', 'gt', 'conf']
     df_new = pd.DataFrame(data, columns=headers)
     print('Saving Checkpoint')
     if not os.path.exists(file_path):
@@ -40,10 +40,10 @@ def main(
         max_batch_size=max_batch_size,
     )
 
-    file_path = 'data/cordis-telecoms.csv'
+    file_path = 'data/cordis-binary-telecoms.csv'
     base_checkpoint_path = 'data/labelled/llama-3-binary-classification/'
     df = pd.read_csv(file_path)
-    df['topics'] = df['topics'].apply(lambda x: ast.literal_eval(x) if x else [])
+    # df = df.iloc[:10]
     print("Starting!")
     num_items = df.shape[0]
     print('Num items: ',num_items)
@@ -62,7 +62,7 @@ def main(
     for idx, row in df.iterrows():
         name = row['name']
         description = row['description']
-        gt = row['topics']
+        gt = row['isTelecoms']
         # Generate confidence scores for each chunk using LLM
                     
         dialog = [
@@ -92,7 +92,7 @@ def main(
             print(generation_content)
             score = -1
 
-        batch_data.append([description, name, score])
+        batch_data.append([description, name, gt, score])
     save_checkpoint(batch_data, checkpoint_path)
     batch_data = []  # Reset the batch data list
 
