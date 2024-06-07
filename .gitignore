@@ -1,15 +1,2 @@
-data/**
-/Meta-Llama-3-8B-Instruct
-from-team/
-setup/
-environment-verbose.yml
-run_all.sh
-methods/bert-binary/final_model
-methods/bert-binary/first-results
-methods/bert-binary/logs
-methods/bert-binary/results
-methods/bert-binary/roberta_final_model
-methods/bert-binary/roberta_results
-methods/bert-multiclass/results*
-methods/bert-multiclass/model*
-methods/bert-multiclass/logs*
+old/
+data/

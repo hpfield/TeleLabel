@@ -1,0 +1,33 @@
+defaults:
+  - model: bert
+  - training: binary
+  - evaluation: default
+  - _self_
+
+hydra:
+  run:
+    dir: ./outputs/${now:%Y-%m-%d_%H-%M-%S}
+  sweep:
+    dir: ./multirun/${now:%Y-%m-%d_%H-%M-%S}
+  job:
+    config_name: config
+
+data:
+  path: ./data
+  processed: ${data.path}/processed
+  raw: ${data.path}/raw
+  labelled: ${data.path}/labelled
+
+model:
+  name: bert
+  checkpoint: /path/to/checkpoints/bert
+
+training:
+  epochs: 10
+  batch_size: 8
+
+evaluation:
+  metrics: [accuracy, precision, recall, f1]
+
+labels:
+  topics: ${labels.topics}
