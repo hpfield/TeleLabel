@@ -1,0 +1,41 @@
+model:
+  name: bert
+  checkpoint: /path/to/checkpoints/bert
+training:
+  epochs: 10
+  batch_size: 8
+evaluation:
+  metrics:
+  - accuracy
+  - precision
+  - recall
+  - f1
+data:
+  path: ./data
+  processed: ${data.path}/processed
+  raw: ${data.path}/raw
+  labelled: ${data.path}/labelled
+labels:
+  topics:
+  - teleology
+  - telecommunications
+  - radio frequency
+  - radar
+  - mobile phones
+  - bluetooth
+  - WiFi
+  - data networks
+  - optical networks
+  - microwave technology
+  - radio technology
+  - mobile radio
+  - 4G
+  - LiFi
+  - mobile network
+  - radio and television
+  - satellite radio
+  - telecommunications networks
+  - 5G
+  - fiber-optic network
+  - cognitive radio
+  - fixed wireless network

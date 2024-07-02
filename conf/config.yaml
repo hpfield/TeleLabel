@@ -4,9 +4,11 @@ defaults:
   - evaluation: default
   - _self_
 
+# Rather than a filename specified here, have a param for either binary or multilabel classification
+
 hydra:
   run:
-    dir: ./outputs/${now:%Y-%m-%d_%H-%M-%S}
+    dir: ''
   sweep:
     dir: ./multirun/${now:%Y-%m-%d_%H-%M-%S}
   job:
@@ -15,9 +17,15 @@ hydra:
 data:
   path: ./data
   processed: ${data.path}/processed
+  multilabel: ${data.processed}/cordis-multilabel-telecoms.csv
+  binary: ${data.processed}/cordis-binary-telecoms.csv
   raw: ${data.path}/raw
   labelled: ${data.path}/labelled
 
+outputs:
+  path: ./outputs
+
+# For ML method training
 model:
   name: bert
   checkpoint: /path/to/checkpoints/bert
@@ -26,8 +34,38 @@ training:
   epochs: 10
   batch_size: 8
 
+# For zero-shot LLM predictions
+llm:
+  model: llama3
+  prompts: ./prompts
+  system_prompt: system_prompt.txt
+  user_prompt: user_prompt.txt
+
 evaluation:
   metrics: [accuracy, precision, recall, f1]
+  datetime: # Set a default filepath
 
 labels:
-  topics: ${labels.topics}
+  topics:
+    - "teleology"
+    - "telecommunications"
+    - "radio frequency"
+    - "radar"
+    - "mobile phones"
+    - "bluetooth"
+    - "WiFi"
+    - "data networks"
+    - "optical networks"
+    - "microwave technology"
+    - "radio technology"
+    - "mobile radio"
+    - "4G"
+    - "LiFi"
+    - "mobile network"
+    - "radio and television"
+    - "satellite radio"
+    - "telecommunications networks"
+    - "5G"
+    - "fiber-optic network"
+    - "cognitive radio"
+    - "fixed wireless network"
