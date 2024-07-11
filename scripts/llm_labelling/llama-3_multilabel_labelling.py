@@ -18,7 +18,7 @@ def save_checkpoint(data, file_path, mode='a'):
     df = pd.DataFrame(data, columns=['text', 'gt', 'topics'])
     df.to_csv(file_path, mode=mode, header=mode=='w', index=False)
 
-@hydra.main(config_path="../../conf", config_name="config", version_base='1.3.2')
+@hydra.main(config_path="../../cfg", config_name="config", version_base='1.3.2')
 def main(
     cfg: DictConfig,
     ckpt_dir: str,

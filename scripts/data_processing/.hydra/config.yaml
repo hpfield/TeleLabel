@@ -10,11 +10,21 @@ evaluation:
   - precision
   - recall
   - f1
+  datetime: null
 data:
   path: ./data
   processed: ${data.path}/processed
+  multilabel: ${data.processed}/cordis-multilabel-telecoms.csv
+  binary: ${data.processed}/cordis-binary-telecoms.csv
   raw: ${data.path}/raw
   labelled: ${data.path}/labelled
+outputs:
+  path: ./outputs
+llm:
+  model: llama3
+  prompts: ./prompts
+  system_prompt: system_prompt.txt
+  user_prompt: user_prompt.txt
 labels:
   topics:
   - teleology

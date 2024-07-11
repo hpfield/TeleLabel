@@ -8,7 +8,7 @@ from omegaconf import DictConfig
 
 PROJECT_ROOT = os.path.abspath(os.path.join(__file__, '../../../'))
 
-@hydra.main(config_path="../../conf", config_name="config", version_base='1.3.2')
+@hydra.main(config_path="../../cfg", config_name="config", version_base='1.3.2')
 def main(cfg: DictConfig):
 
     df = pd.read_csv(os.path.join(PROJECT_ROOT, cfg.data.raw, 'data.csv'))
