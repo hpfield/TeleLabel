@@ -10,3 +10,8 @@ methods/bert-binary/logs
 methods/bert-binary/results
 methods/bert-binary/roberta_final_model
 methods/bert-binary/roberta_results
+binary/data/all_samples.csv
+raw_data/data.csv
+multilabel/train/bert
+multilabel/train/bert_old
+binary/train/bert

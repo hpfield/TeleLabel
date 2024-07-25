@@ -30,8 +30,8 @@ conda env update --file environment.yml
 
 Data is stored on google drive.
 
-```javascript
-mkdir data && cd data
+```
+cd raw_data
 ```
 
 ```javascript
@@ -41,14 +41,14 @@ wget https://drive.google.com/file/d/1YRW6CTs1Pc6gfmzVNST0oP-uP5bqKOXv/view?usp=
 ## Clean Data
 
 ```
-cd eda
-python cordis.py
+cd preprocessing
+python process_raw.py
 ```
 
 
 ## Label Data
 
-Rather than a list of confirmed labels, we ask the model to output a confidence score for each label so that we can later determine an appropriate threshold. 
+Rather than a list of confirmed labels, we ask the model to output a confidence score for each label so that we can later determine an appropriate threshold.
 
 Furthermore, we want to know if there is a limit to how many possible labels the model can effectively consider at one time. We have a total of 22 lables, passing the labels to the model one at a time to start with, all the way up to considering all possible labels at once. The more labels we can consider at one time, the faster we can label the full dataset.
 

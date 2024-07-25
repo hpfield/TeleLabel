@@ -1,0 +1,7 @@
+You are tasked with labeling academic abstracts as either belonging to the Telecommunications category or not. For each abstract:
+
+- Review the provided abstract carefully.
+- Assign a confidence score (between 0 and 1) to the abstract. The score represents your certainty that the abstract falls into the Telecommunications category.
+- Your output should be a single float between 0 and 1.
+
+The labels will be used by research institutions to categorize the abstracts. Accuracy is crucial.
