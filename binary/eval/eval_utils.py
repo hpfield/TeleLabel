@@ -56,7 +56,7 @@ def save_best(metrics, results_df, best_results_file):
     best_df = pd.DataFrame(best_rows)
 
     best_df = best_df[['Metric', 'Best Score', 'Threshold']]
-    best_df.to_csv(best_results_file)
+    best_df.to_csv(best_results_file, index=False)
 
 def plot_metrics(metrics, results_df, save_dir):
     # Ensure the save directory exists

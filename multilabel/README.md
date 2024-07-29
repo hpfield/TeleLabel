@@ -6,6 +6,7 @@ This section covers the required steps to:
 * Train, run and evaluate ML methods
 * Run and evaluate zero-shot LLM-based classification
 * Use ML and LLM methods to label the full dataset
+* Compare the performance of each method
 
 
 ## Machine Learning

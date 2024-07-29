@@ -43,7 +43,7 @@ f1 = f1_score(true_labels, predictions)
 print(f'Accuracy: {accuracy:.4f}')
 print(f'Precision: {precision:.4f}')
 print(f'Recall: {recall:.4f}')
-print(f'F1 Score: {f1:.4f}')
+print(f'F1_score: {f1:.4f}')
 
 # Save the metrics to a CSV file
 metrics = {
