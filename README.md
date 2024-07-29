@@ -1,3 +1,6 @@
+# Work In Progress
+I'm currently reformatting this code to be easier to understand and run. This work is being completed in the demos branch and will be available soon.
+
 ## Text-labelling
 
 This repo applies Llama3 8B to perform zero-shot multilabel classification on a set of 522 academic abstracts. This set of abstracts are from [CORDIS](https://cordis.europa.eu/), and represent examples of telecommunications research. The topic labels are derived from the classification system used by CORDIS. This is a one-to-many mapping, where each academic abstract can have multiple associated labels.
