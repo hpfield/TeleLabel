@@ -83,10 +83,6 @@ def evaluate_at_thresholds(model, dataloader, thresholds, device):
                 all_preds.append(preds.cpu().numpy())
                 all_labels.append(batch['labels'].cpu().numpy())
         
-        # Check consistency before concatenating
-        print(f"Preds shapes: {[p.shape for p in all_preds]}")
-        print(f"Labels shapes: {[l.shape for l in all_labels]}")
-        
         all_preds = np.concatenate(all_preds, axis=0)
         all_labels = np.concatenate(all_labels, axis=0)
         

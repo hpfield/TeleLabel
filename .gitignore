@@ -15,3 +15,5 @@ raw_data/data.csv
 multilabel/train/bert
 multilabel/train/bert_old
 binary/train/bert
+old/
+models/

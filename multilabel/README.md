@@ -94,3 +94,13 @@ torchrun --nproc_per_node 1 llama3-8B_for_labelling.py --metric=F1_score
 ```
 
 
+### Comparing Bert Vs Llama3-8B
+
+Creates a png plot comparing the two methods across Accuracy, Precision, Recall and F1 Score saved in `results/comparison`.
+
+```javascript
+cd eval
+python compare_methods.py
+```
+
+

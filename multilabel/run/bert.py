@@ -98,7 +98,7 @@ def run_inference(data_path, metric):
     output_data = [{'text': text, 'topics': topic_list} for text, topic_list in zip(texts, topics)]
 
     # Save the predictions to a JSON file
-    output_file_path = os.path.join(OUTPUT_DIR, f'inference_{timestamp}.json')
+    output_file_path = os.path.join(OUTPUT_DIR, f'optimising_{metric}_{timestamp}.json')
     with open(output_file_path, 'w') as f:
         json.dump(output_data, f, indent=4)
 

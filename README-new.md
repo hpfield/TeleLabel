@@ -11,10 +11,8 @@ Data is stored on google drive.
 
 
 ```
+mkdir raw_data
 cd raw_data
-```
-
-```javascript
 wget https://drive.google.com/file/d/1YRW6CTs1Pc6gfmzVNST0oP-uP5bqKOXv/view?usp=sharing
 ```
 
