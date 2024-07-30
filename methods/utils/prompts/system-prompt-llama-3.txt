@@ -1,1 +1,0 @@
-Always answer with an array of strings.

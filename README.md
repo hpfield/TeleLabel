@@ -1,76 +1,102 @@
-# Work In Progress
-I'm currently reformatting this code to be easier to understand and run. This work is being completed in the demos branch and will be available soon.
+# Text Labelling: Zero-shot LLM vs Trad-ML
 
-## Text-labelling
+## Task
 
-This repo applies Llama3 8B to perform zero-shot multilabel classification on a set of 522 academic abstracts. This set of abstracts are from [CORDIS](https://cordis.europa.eu/), and represent examples of telecommunications research. The topic labels are derived from the classification system used by CORDIS. This is a one-to-many mapping, where each academic abstract can have multiple associated labels.
+We have \~125k academic abstracts that need to be:
+
+
+1. Categorised into being telecoms themed (Binary)
+2. Labelled with one or more predefined telecoms labels (Multilabel)
+
+
+For this dataset, we have only 522 labelled examples. Given this tiny amount of labelled data, traditional supervised learning methods are at a disadvantage. Because of this, I have compared the fine-tuning of BERT (a standard, high performing transformer-based ML model) with Llama3-8B (A high performing LLM for its size) to conduct the task in a zero-shot manner.
+
+
+## Results
+
+### Binary classification
+
+ ![](binary/results/comparison/binary_performance_comparison.png)
+
+
+
+### Multilabel classification
+
+ ![](multilabel/results/comparison/performance_comparison.png)
+
+
+## Repo Capabilities
+
+This repo provides the tools to conduct the following tasks for both binary and multilabel classification using BERT and Llama3-8B:
+
+* Create the classification dataset
+* Train, run and evaluate ML method
+* Run and evaluate zero-shot LLM-based classification
+* Use ML and LLM methods to label the full dataset
+* Compare the performance of each method
 
 ## Installation
 
-This repo has only been tested on Ubuntu 22.04, python 3.8 and requires at least 16GB of GPU. Note that although the requirements work for my machine, you may need to alter some of the packages to conform to your Nvidia drivers.
+To run the LLM components of this repo, you will need at least 16GB of Nvidia GPU memory. This repo has been tested on Ubuntu 22.04 using python 3.8.
+
 
 ```
-conda create -n text-labelling python=3.8
+conda env create -f environment.yml
+conda activate llama_vs_bert
 ```
 
-```
-conda activate text-labelling
-```
 
-### Installing Llama 3 8B
+### Installing Llama3-8B
 
-Follow the instructions at the [Llama 3 git repo](https://github.com/meta-llama/llama3) to install the model. Once installed, copy the `Meta-Llama-3-8B-Instruct/` folder into the root directory of this repo.
+Follow the instructions at the [Llama 3 git repo](https://github.com/meta-llama/llama3) to install the model. This may involve toggling the versions of pytroch and cuda to suit your hardware. Once installed, copy the `Meta-Llama-3-8B-Instruct` folder into the root directory of this repo.
 
-### Installing necessary packages
-
-Run the following to install the remaining packages. Due to the nature of setting up Llama 3 8B, this may require tweaking on some sytems.
-
-```
-conda env update --file environment.yml
-```
 
 ## Downloading Data
 
 Data is stored on google drive.
 
-```javascript
-mkdir data && cd data
-```
 
-```javascript
+```
+mkdir raw_data
+cd raw_data
 wget https://drive.google.com/file/d/1YRW6CTs1Pc6gfmzVNST0oP-uP5bqKOXv/view?usp=sharing
 ```
 
 ## Clean Data
 
-```
-cd eda
-python cordis.py
-```
+Processes the raw data into suitable datasets for binary classification and multilabel downstream tasks.
 
+The `create_full_binary` parameter cleans the entire \~150k samples for later inference. Set to `False` if only interested in model training and evaluation.
 
-## Label Data
-
-Rather than a list of confirmed labels, we ask the model to output a confidence score for each label so that we can later determine an appropriate threshold. 
-
-Furthermore, we want to know if there is a limit to how many possible labels the model can effectively consider at one time. We have a total of 22 lables, passing the labels to the model one at a time to start with, all the way up to considering all possible labels at once. The more labels we can consider at one time, the faster we can label the full dataset.
 
 ```
-cd methods/telecoms-topics-classification/
-sh llama-3-multilabel-classification.sh
+cd preprocessing
+python process_raw.py create_full_binary=True
 ```
 
 
-## Evaluation
+## Binary Classification
 
-To evaluate the performance of Llama 3 when assigning topic labels to academic abstracts, we consider a range of cutoff points for confidence thresholds and the quantity of possible topics we ask the model to consider at once.
 
-```
-cd eval
-python llama-3-multilabel-eval.py
+```javascript
+cd binary
 ```
 
 
-## Results
+View the README in the `binary` directory for further instruction.
+
+
+## Multilabel Classification
+
+Multilabel classification approaches can be trained and evaluated without having completed the Binary classification component. However, to perform multilabel classification on the full dataset, Binary classification must have been completed so that only telecoms data is considered.
+
+
+```javascript
+cd multilabel
+```
+
+View the README in the `multilabel` directory for further instruction.
+
+## Interactive Plots
 
 Interactive plots at the [repo page](https://hpfield.github.io/text-labelling/)

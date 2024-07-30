@@ -1,25 +1,50 @@
-name: text-labels-test
+name: llama_vs_bert
 channels:
   - pytorch
-  - rapidsai
   - nvidia
   - conda-forge
 dependencies:
   - python=3.8
-  - jupyterlab
-  - pandas
-  - dask
-  - cudf
-  - jupyter
-  - ipykernel
-  - ca-certificates
-  - certifi
-  - openssl
-  - numpy=1.23.5
-  - cupy
-  - dask-cuda
   - pytorch
-  - torchvision
-  - torchaudio
+  - cudatoolkit=11.8
+  - numpy
+  - pandas
   - scikit-learn
-
+  - matplotlib
+  - seaborn
+  - jupyterlab
+  - pip
+  - pip:
+      - absl-py
+      - accelerate
+      - blobfile
+      - contourpy
+      - cupy-cuda11x
+      - cycler
+      - cython
+      - dask
+      - fairscale
+      - fastrlock
+      - fire
+      - fonttools
+      - google-auth
+      - google-auth-oauthlib
+      - grpcio
+      - kaleido
+      - kiwisolver
+      - lxml
+      - markdown
+      - oauthlib
+      - pyarrow
+      - pyasn1
+      - pyasn1-modules
+      - pycryptodomex
+      - pyparsing
+      - regex
+      - requests-oauthlib
+      - rsa
+      - tensorboard
+      - tensorboard-data-server
+      - termcolor
+      - tiktoken
+      - werkzeug
