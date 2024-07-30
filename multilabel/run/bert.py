@@ -7,6 +7,7 @@ import json
 from transformers import BertTokenizer, BertForSequenceClassification
 from torch.utils.data import Dataset, DataLoader
 from datetime import datetime
+from tqdm import tqdm
 
 MULTILABEL_ROOT = os.path.abspath(os.path.join(__file__, '..', '..'))
 
@@ -48,7 +49,7 @@ def run_inference(data_path, metric):
     # Get the best threshold for the given metric
     threshold = get_best_threshold(metric)
     print(f'Threshold: {threshold}')
-    threshold=0.5
+    threshold = 0.5
 
     # Load the tokenizer and model
     tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
@@ -59,12 +60,14 @@ def run_inference(data_path, metric):
     model.to(device)
 
     # Read the input CSV file
+    print('Reading data')
     input_df = pd.read_csv(data_path)
 
     # Extract the 'text' column
     texts = input_df['text'].tolist()
 
     # Tokenize the texts
+    print('Encoding data')
     encodings = tokenizer(texts, truncation=True, padding=True, max_length=512)
 
     # Create the dataset and dataloader
@@ -72,11 +75,15 @@ def run_inference(data_path, metric):
     dataloader = DataLoader(dataset, batch_size=8)
 
     # Run inference
+    print("Setting model to evaluation mode...")
     model.eval()
+    print("Model is in evaluation mode.")
+
     all_preds = []
 
+    print('Srtarting Inference')
     with torch.no_grad():
-        for batch in dataloader:
+        for batch in tqdm(dataloader, desc="Running Inference"):
             batch = {k: v.to(device) for k, v in batch.items()}
             outputs = model(input_ids=batch['input_ids'], attention_mask=batch['attention_mask'])
             probs = torch.sigmoid(outputs.logits)
@@ -106,7 +113,7 @@ def run_inference(data_path, metric):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Run inference on a dataset and store the predictions.')
-    parser.add_argument('data_file', type=str, nargs='?', default=DEFAULT_DATA_PATH, help='Path to the data file for inference')
+    parser.add_argument('--data_file', type=str, nargs='?', default=DEFAULT_DATA_PATH, help='Path to the data file for inference')
     parser.add_argument('--metric', type=str, default='F1_score', help='Performance metric to determine the threshold (e.g., F1_score, Precision, Recall, Accuracy)')
     args = parser.parse_args()
     

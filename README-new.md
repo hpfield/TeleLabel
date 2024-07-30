@@ -24,6 +24,17 @@ For this dataset, we have only 522 labelled examples. Given this tiny amount of 
 
  ![](multilabel/results/comparison/performance_comparison.png)
 
+
+## Repo Capabilities
+
+This repo provides the tools to conduct the following tasks for both binary and multilabel classification using BERT and Llama3-8B:
+
+* Create the classification dataset
+* Train, run and evaluate ML method
+* Run and evaluate zero-shot LLM-based classification
+* Use ML and LLM methods to label the full dataset
+* Compare the performance of each method
+
 ## Installation
 
 To run the LLM components of this repo, you will need at least 16GB of Nvidia GPU memory. This repo has been tested on Ubuntu 22.04 using python 3.8.

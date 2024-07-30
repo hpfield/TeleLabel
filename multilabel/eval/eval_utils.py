@@ -218,12 +218,12 @@ def plot_metrics(metrics, results_df, save_dir):
             ),
             title=f'3D Plot of {metric}',
             width=800,  # Width of the plot in pixels
-            height=600,  # Height of the plot in pixels
+            height=800,  # Height of the plot in pixels
             margin=dict(l=0, r=0, t=0, b=0),
             autosize=False
         )
         # Save as a static image
-        file_path = os.path.join(save_dir, '{metric}_plot.')
+        file_path = os.path.join(save_dir, f'{metric}_plot.')
         fig.write_image(file_path + 'png')
         fig.write_html(file_path + 'html')
         print(f"Plot saved as static image to {file_path}")
