@@ -5,6 +5,7 @@
 We have \~125k academic abstracts that need to be:
 
 
+
 1. Categorised into being telecoms themed (Binary)
 2. Labelled with one or more predefined telecoms labels (Multilabel)
 
@@ -59,8 +60,10 @@ Data is stored on google drive.
 ```
 mkdir raw_data
 cd raw_data
-wget https://drive.google.com/file/d/1YRW6CTs1Pc6gfmzVNST0oP-uP5bqKOXv/view?usp=sharing
 ```
+
+
+Go to the [google drive file location](https://drive.google.com/file/d/1YRW6CTs1Pc6gfmzVNST0oP-uP5bqKOXv/view?usp=drive_link) and download the csv into raw_data.
 
 ## Clean Data
 
@@ -95,8 +98,5 @@ Multilabel classification approaches can be trained and evaluated without having
 cd multilabel
 ```
 
+
 View the README in the `multilabel` directory for further instruction.
-
-## Interactive Plots
-
-Interactive plots at the [repo page](https://hpfield.github.io/text-labelling/)
