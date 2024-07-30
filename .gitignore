@@ -18,3 +18,4 @@ binary/train/bert
 old/
 models/
 multilabel/data/all_samples.csv
+multilabel/outputs

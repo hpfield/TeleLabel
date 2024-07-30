@@ -109,3 +109,4 @@ python compare_methods.py
 ```
 
 
+ ![](multilabel/results/comparison/performance_comparison.png)
