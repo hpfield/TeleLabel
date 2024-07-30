@@ -23,10 +23,10 @@ For this dataset, we have only 522 labelled examples. Given this tiny amount of 
 
 ### Multilabel classification
 
-Interactive plots at the [repo page](https://hpfield.github.io/llama3-8B_vs_BERT__binary_and_multilabel_classification/)
-
  ![](multilabel/results/comparison/performance_comparison.png)
 
+#### LLM Plots
+Interactive plots at the [repo page](https://hpfield.github.io/llama3-8B_vs_BERT__binary_and_multilabel_classification/)
 
 ## Repo Capabilities
 
