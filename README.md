@@ -99,7 +99,3 @@ cd multilabel
 ```
 
 View the README in the `multilabel` directory for further instruction.
-
-## Interactive Plots
-
-Interactive plots at the [repo page](https://hpfield.github.io/text-labelling/)
