@@ -1,5 +1,0 @@
-,Metric,Best Score,Threshold,Chunk Size
-0,Precision,1.0,1.0,21.0
-1,Recall,0.8125,0.1,7.0
-2,F1 Score,0.35155790711346263,0.9,5.0
-3,Accuracy,0.9513419913419898,1.0,18.0

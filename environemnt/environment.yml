@@ -1,0 +1,25 @@
+name: text-labels-test
+channels:
+  - pytorch
+  - rapidsai
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.8
+  - jupyterlab
+  - pandas
+  - dask
+  - cudf
+  - jupyter
+  - ipykernel
+  - ca-certificates
+  - certifi
+  - openssl
+  - numpy=1.23.5
+  - cupy
+  - dask-cuda
+  - pytorch
+  - torchvision
+  - torchaudio
+  - scikit-learn
+

@@ -50,7 +50,7 @@ metrics = {
     'Accuracy': [accuracy],
     'Precision': [precision],
     'Recall': [recall],
-    'F1 Score': [f1]
+    'F1_score': [f1]
 }
 
 metrics_df = pd.DataFrame(metrics)

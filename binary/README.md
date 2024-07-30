@@ -6,6 +6,7 @@ This section covers the required steps to:
 * Train, run and evaluate ML methods
 * Run and evaluate zero-shot LLM-based classification
 * Use ML and LLM methods to label the full dataset
+* Compare the performance of each method
 
 
 ## Machine Learning
@@ -39,12 +40,12 @@ python bert.py
 
 ### Running Bert on full dataset
 
-Running inference with Bert will generate a list of labels for a given csv. The path to the csv must be specified with the `data_file` argument. If no argument is given, this defaults to the test set, which can be used as a reference for formatting data and can be found at `binary/data/test.csv`. If you generated the full dataset, as shown in the project root’s README, you can find the csv file in `binary/data/all_samples.csv`.
+Running inference with Bert will generate a list of labels for a given csv. The path to the csv must be specified with the `data_file` argument. If no argument is given, this defaults to the test set, which can be used as a reference for formatting data and can be found at `binary/data/test.csv`. If you generated the full dataset, as shown in the project root’s README, you can find the csv file in `binary/data/all_samples.csv`. To later use the file in the multilabelling phase, you must specify the `output_file` argument and ensure the resulting file is named `all_samples.csv`.
 
 
 ```
 cd run
-python bert.py data_file=path/to/data/file.csv
+python bert.py --data_file path/to/data/file.csv --output_file path/to/desired/file/all_samples.csv
 ```
 
 

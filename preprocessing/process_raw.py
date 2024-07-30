@@ -5,7 +5,6 @@ import numpy as np
 import json
 import argparse
 
-
 PROJECT_ROOT = os.path.abspath(os.path.join(__file__, '../../'))
 
 def main(create_full_binary):
@@ -21,6 +20,10 @@ def main(create_full_binary):
     if create_full_binary:
         full_binary = df[['description', 'name']].copy()
         full_binary["text"] = "Title: " + full_binary["name"] + " Abstract: " + full_binary["description"]
+
+        # Filter out invalid text entries
+        full_binary = full_binary[full_binary['text'].apply(lambda x: isinstance(x, str))]
+        
         full_binary.drop(columns=["name", "description"], inplace=True)
         full_binary.to_csv(os.path.join(PROJECT_ROOT, 'binary', 'data', 'all_samples.csv'), index=False)
 
@@ -33,6 +36,10 @@ def main(create_full_binary):
 
     # Collate Abstract title and content into single datapoint
     df["text"] = "Title: " + df["name"] + " Abstract: " + df["description"]
+
+    # Filter out invalid text entries
+    df = df[df['text'].apply(lambda x: isinstance(x, str))]
+    
     df.drop(columns=["name", "description"], inplace=True)
 
     # List of topics we use as classes

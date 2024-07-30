@@ -4,7 +4,7 @@ from collections import Counter
 import glob
 import seaborn as sns
 
-POSSIBLE_TOPICS = 6 #22 
+POSSIBLE_TOPICS = 22 
 
 # Function to compute false negatives given a DataFrame
 def compute_false_negatives(df, thresh):
@@ -20,7 +20,7 @@ def compute_false_negatives(df, thresh):
 
 def get_latest_file_path(data_path, chunk_size):
     pattern = os.path.join(data_path, f'cordis-telecoms-chunk_size-{chunk_size}_*.json')
-    print(f'Pattern: {pattern}')
+    # print(f'Pattern: {pattern}')
     list_of_files = glob.glob(pattern)
     if not list_of_files:
         return None
@@ -38,7 +38,7 @@ def get_results(data_path):
         thresh = t / 10.0
 
         # Evaluate the ability of the model to predict topics with the current confidence threshold with all chunk sizes
-        for chunk_size in range(1, POSSIBLE_TOPICS):
+        for chunk_size in range(1, POSSIBLE_TOPICS+1):
             file_path = get_latest_file_path(data_path, chunk_size)
             df = pd.read_json(file_path, lines=True)
 

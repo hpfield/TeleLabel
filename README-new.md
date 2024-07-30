@@ -1,8 +1,39 @@
 # Text Labelling: Zero-shot LLM vs Trad-ML
 
-## Installing Llama3-8B
+## Task
 
-Follow the instructions at the Llama 3 git repo to install the model. Once installed, copy the `Meta-Llama-3-8B-Instruct` folder into the root directory of this repo.
+We have \~125k academic abstracts that need to be:
+
+
+1. Categorised into being telecoms themed (Binary)
+2. Labelled with one or more predefined telecoms labels (Multilabel)
+
+
+For this dataset, we have only 522 labelled examples. Given this tiny amount of labelled data, traditional supervised learning methods are at a disadvantage. Because of this, I have compared the fine-tuning of BERT (a standard, high performing transformer-based ML model) with Llama3-8B (A high performing LLM for its size) to conduct the task in a zero-shot manner.
+
+
+## Results
+
+### Binary classification
+
+ ![](binary/results/comparison/binary_performance_comparison.png)
+
+
+
+## Installation
+
+To run the LLM components of this repo, you will need at least 16GB of Nvidia GPU memory. This repo has been tested on Ubuntu 22.04 using python 3.8.
+
+
+```
+conda env create -f environment.yml
+conda activate llama_vs_bert
+```
+
+
+### Installing Llama3-8B
+
+Follow the instructions at the [Llama 3 git repo](https://github.com/meta-llama/llama3) to install the model. This may involve toggling the versions of pytroch and cuda to suit your hardware. Once installed, copy the `Meta-Llama-3-8B-Instruct` folder into the root directory of this repo.
 
 
 ## Downloading Data
@@ -20,7 +51,7 @@ wget https://drive.google.com/file/d/1YRW6CTs1Pc6gfmzVNST0oP-uP5bqKOXv/view?usp=
 
 Processes the raw data into suitable datasets for binary classification and multilabel downstream tasks.
 
-The `create_full_binary` parameter cleans the entire \~150k samples for later inference. Omit this if only interested in model training and evaluation.
+The `create_full_binary` parameter cleans the entire \~150k samples for later inference. Set to `False` if only interested in model training and evaluation.
 
 
 ```
