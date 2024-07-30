@@ -20,6 +20,10 @@ For this dataset, we have only 522 labelled examples. Given this tiny amount of 
 
 
 
+### Multilabel classification
+
+ ![](multilabel/results/comparison/performance_comparison.png)
+
 ## Installation
 
 To run the LLM components of this repo, you will need at least 16GB of Nvidia GPU memory. This repo has been tested on Ubuntu 22.04 using python 3.8.
