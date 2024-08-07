@@ -25,6 +25,8 @@ For this dataset, we have only 522 labelled examples. Given this tiny amount of 
 
  ![](multilabel/results/comparison/performance_comparison.png)
 
+#### LLM Plots
+Interactive plots at the [repo page](https://hpfield.github.io/llama3-8B_vs_BERT__binary_and_multilabel_classification/)
 
 ## Repo Capabilities
 
@@ -97,6 +99,5 @@ Multilabel classification approaches can be trained and evaluated without having
 ```javascript
 cd multilabel
 ```
-
 
 View the README in the `multilabel` directory for further instruction.
