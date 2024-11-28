@@ -6,6 +6,7 @@ We have \~125k academic abstracts that need to be:
 
 
 
+
 1. Categorised into being telecoms themed (Binary)
 2. Labelled with one or more predefined telecoms labels (Multilabel)
 
@@ -26,6 +27,7 @@ For this dataset, we have only 522 labelled examples. Given this tiny amount of 
  ![](multilabel/results/comparison/performance_comparison.png)
 
 #### LLM Plots
+
 Interactive plots at the [repo page](https://hpfield.github.io/llama3-8B_vs_BERT__binary_and_multilabel_classification/)
 
 ## Repo Capabilities
@@ -53,19 +55,6 @@ conda activate llama_vs_bert
 
 Follow the instructions at the [Llama 3 git repo](https://github.com/meta-llama/llama3) to install the model. This may involve toggling the versions of pytroch and cuda to suit your hardware. Once installed, copy the `Meta-Llama-3-8B-Instruct` folder into the root directory of this repo.
 
-
-## Downloading Data
-
-Data is stored on google drive.
-
-
-```
-mkdir raw_data
-cd raw_data
-```
-
-
-Go to the [google drive file location](https://drive.google.com/file/d/1YRW6CTs1Pc6gfmzVNST0oP-uP5bqKOXv/view?usp=drive_link) and download the csv into raw_data.
 
 ## Clean Data
 
