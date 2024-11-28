@@ -1,6 +1,5 @@
 /Meta-Llama-3-8B-Instruct
 binary/data/all_samples.csv
-raw_data/data.csv
 multilabel/train/bert
 binary/train/bert
 multilabel/data/all_samples.csv
