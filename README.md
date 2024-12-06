@@ -39,6 +39,12 @@ These topics have a few issues, the most important of which are:
 - Repetition: in the above example, we see a hierarchy of concepts ending in **5G**. Because of the way the topics were filtered, we also included telecommunications > telecommunications networks > mobile network  > **5G** in our possible labels, but only 5G is stored as a label for this example. This repetition of the same concept creates a noisy decision space for the models, especially the LLM which performs this task zero-shot.
 - Missing context: The topics for each datapoint relate to the entire project, but we are attempting to obtain all the relevant information from the abstract alone. In many cases, the abstract does not contain enough information to properly label the datapoint.
 
+## Future Work
+To overcome the label noise issue, we can either:
+- Investigate auto-labelling using LLMs
+- Manually create a labelled dataset
+- Engineer the current dataset for better labels
+
 ## Repo Capabilities
 
 This repo provides the tools to conduct the following tasks for both binary and multilabel classification using BERT and Llama3-8B:
@@ -48,6 +54,7 @@ This repo provides the tools to conduct the following tasks for both binary and 
 * Run and evaluate zero-shot LLM-based classification
 * Use ML and LLM methods to label the full dataset
 * Compare the performance of each method
+* Manually alter the dataset labels
 
 ## Installation
 
@@ -118,3 +125,15 @@ cd multilabel
 ```
 
 View the README in the `multilabel` directory for further instruction.
+
+
+## Data Labelling
+
+WIP - To begin manually altering the data labels, install streamlit with `conda install streamlit` and run the labelling script:
+
+```
+cd preprocessing
+streamlit labelling.py
+```
+
+The updated labels will be saved to `preprocessing/updated/multilabel_test.csv`.
