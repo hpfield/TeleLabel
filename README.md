@@ -36,7 +36,7 @@ Within the CORDIS dataset, each academic abstract is stored with an associated l
 ![](images/cordis-topics.png)
 
 These topics have a few issues, the most important of which are:
-- Repetition: in the above example, we see a hierarchy of concepts ending in **5G**. Because of the way the topics were filtered, we also included telecommunications > telecommunications networks > mobile network  > **5G** in our possible labels, but only 5G is stored as a label for this example. This repetition of the same concept creates a noisy action space for the models, especially the LLM which performs this task zero-shot.
+- Repetition: in the above example, we see a hierarchy of concepts ending in **5G**. Because of the way the topics were filtered, we also included telecommunications > telecommunications networks > mobile network  > **5G** in our possible labels, but only 5G is stored as a label for this example. This repetition of the same concept creates a noisy decision space for the models, especially the LLM which performs this task zero-shot.
 - Missing context: The topics for each datapoint relate to the entire project, but we are attempting to obtain all the relevant information from the abstract alone. In many cases, the abstract does not contain enough information to properly label the datapoint.
 
 ## Repo Capabilities
