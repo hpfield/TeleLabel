@@ -26,9 +26,16 @@ For this dataset, we have only 522 labelled examples. Given this tiny amount of 
 
  ![](multilabel/results/comparison/performance_comparison.png)
 
-#### LLM Plots
+### LLM Plots
 
 Interactive plots at the [repo page](https://hpfield.github.io/llama3-8B_vs_BERT__binary_and_multilabel_classification/)
+
+## Problems
+Within the CORDIS dataset, each academic abstract is stored with an associated list of topics (Fields of Science). These topics became our labels for the data, filtered by topics associated with the telecoms industry. 
+![](images/cordis-topics.png)
+These topics have a few issues, the most important of which are:
+- Repetition: in the above example, we see a hierarchy of concepts ending in **5G**. Because of the way the topics were filtered, we also included telecommunications > telecommunications networks > mobile network  > **5G** in our possible labels, but only 5G is stored as a label for this example. This repetition of the same concept creates a noisy action space for the models, especially the LLM which performs this task zero-shot.
+- Missing context: The topics for each datapoint relate to the entire project, but we are attempting to obtain all the relevant information from the abstract alone. In many cases, the abstract does not contain enough information to properly label the datapoint.
 
 ## Repo Capabilities
 
@@ -54,6 +61,25 @@ conda activate llama_vs_bert
 ### Installing Llama3-8B
 
 Follow the instructions at the [Llama 3 git repo](https://github.com/meta-llama/llama3) to install the model. This may involve toggling the versions of pytroch and cuda to suit your hardware. Once installed, copy the `Meta-Llama-3-8B-Instruct` folder into the root directory of this repo.
+
+## Downloading data
+
+Install git lfs to handle large files in the repo with:
+```
+sudo apt update
+sudo apt install git-lfs
+```
+
+Initialise git lfs and track csv files:
+```
+git lfs install
+git lfs track "*.csv"
+```
+
+Pull the large files (may take a while):
+```
+git lfs pull
+```
 
 
 ## Clean Data
